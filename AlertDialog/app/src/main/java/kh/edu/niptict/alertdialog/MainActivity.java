@@ -16,35 +16,61 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // create AlertDialog with context of Activity
-        final AlertDialog.Builder alertDialog = new
-                AlertDialog.Builder(this);
-        // Set title for Dialog
-        alertDialog.setTitle("Connect to Provider");
+//        // create AlertDialog with context of Activity
+//        final AlertDialog.Builder alertDialog = new
+//                AlertDialog.Builder(this);
+//        // Set title for Dialog
+//        alertDialog.setTitle("Connect to Provider");
+//
+//        // Set content
+//        alertDialog.setMessage(R.string.alert_mss);
+//
+//        // Set Button
+//        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                Log.d("User click", "button Positive");
+//            }
+//        });
+//
+//        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                Log.d("User click", "button Positive");
+//            }
+//        });
+//
+//        alertDialog.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                Log.d("User click", "button Cancel");
+//                Toast.makeText(MainActivity.this, "Cancel", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
-        // Set content
-        alertDialog.setMessage(R.string.alert_mss);
+        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        alertDialog.setTitle("Show Alert Dialog");
+        alertDialog.setMessage("Hello World");
 
-        // Set Button
         alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Log.d("User click", "button Positive");
+                Toast.makeText(MainActivity.this, "Yes", Toast.LENGTH_SHORT).show();
             }
         });
 
         alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Log.d("User click", "button Positive");
+                Toast.makeText(MainActivity.this, "No", Toast.LENGTH_SHORT).show();
             }
         });
 
         alertDialog.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Log.d("User click", "button Cancel");
                 Toast.makeText(MainActivity.this, "Cancel", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -52,8 +78,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
+             //   alertDialog.show();
                 alertDialog.show();
             }
         });

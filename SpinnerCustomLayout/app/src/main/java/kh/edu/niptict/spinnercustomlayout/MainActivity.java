@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import kh.edu.niptict.spinnercustomlayout.adapter.ItemsAdapter;
 import kh.edu.niptict.spinnercustomlayout.model.Items;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class MainActivity extends AppCompatActivity {//implements AdapterView.OnItemSelectedListener{
     ArrayList<Items> itemsList = new ArrayList<>();
 
     @Override
@@ -38,34 +38,34 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         // Set adapter into Spinner
         spinner.setAdapter(adapter);
 
-//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                String item = itemsList.get(position).getName();
-//                Toast.makeText(MainActivity.this, item, Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//
-//            }
-//        });
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String item = itemsList.get(position).getName();
+                Toast.makeText(MainActivity.this, item, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         // Add listener into Spinner
-        spinner.setOnItemSelectedListener(this);
+    //    spinner.setOnItemSelectedListener(this);
 
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        // Get selected item by position selection from user
-        String item = itemsList.get(position).getName();
-        // show information of selected item to User
-        Toast.makeText(this, item, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
+//    @Override
+//    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//        // Get selected item by position selection from user
+//        String item = itemsList.get(position).getName();
+//        // show information of selected item to User
+//        Toast.makeText(this, item, Toast.LENGTH_SHORT).show();
+//    }
+//
+//    @Override
+//    public void onNothingSelected(AdapterView<?> parent) {
+//
+//    }
 }
