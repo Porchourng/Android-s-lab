@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<item
+    android:id="@+id/fav"
+    android:title="Favourite"
+    android:icon="@mipmap/ic_launcher"
+    app:showAsAction="ifRoom"
+    android:orderInCategory="100"
+    android:onClick="Test"/>
+    <item
+        android:id="@+id/setting"
+        android:title="Setting"
+        android:icon="@mipmap/ic_launcher_round"
+        app:showAsAction="ifRoom|withText"
+        android:orderInCategory="10"/>
+    <item
+        android:id="@+id/acc"
+        android:title="Account"
+        android:icon="@mipmap/ic_launcher_round"
+        app:showAsAction="ifRoom"
+        android:orderInCategory="50"/>
+
+</menu>
