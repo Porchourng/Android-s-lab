@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">NavigationDrawer</string>
+    <string name="my_item">My apps and Game</string>
+    <string name="my_notification">My Notification</string>
+    <string name="subscription">My Subscription</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
