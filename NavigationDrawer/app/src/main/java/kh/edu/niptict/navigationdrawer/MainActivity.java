@@ -1,5 +1,9 @@
 package kh.edu.niptict.navigationdrawer;
 
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +15,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import kh.edu.niptict.navigationdrawer.fragment.MyAppFragment;
@@ -60,6 +67,16 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView textView = headerView.findViewById(R.id.nameProfile);
+        textView.setText("NewName");
+
+        ImageView imageView = headerView.findViewById(R.id.imageView);
+        Resources res = getResources();
+        Drawable drawable = res.getDrawable(R.drawable.ic_restaurant);
+        imageView.setImageDrawable(drawable);
+
     }
 
     @Override
@@ -70,5 +87,10 @@ public class MainActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void goToProfile(View view) {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
     }
 }
