@@ -33,12 +33,12 @@ public interface LoanDao {
     @Query("SELECT * From Loan")
     LiveData<List<Loan>> findAllLoans();
 
-    @Query("SELECT Loan.id, Book.title, User.name, Loan.startTime, Loan.endTime From Loan " +
+    @Query("SELECT Loan.id, Book.book_name, User.name, Loan.startTime, Loan.endTime From Loan " +
         "INNER JOIN Book ON Loan.book_id = Book.id " +
         "INNER JOIN User ON Loan.user_id = User.id ")
     LiveData<List<LoanWithUserAndBook>> findAllWithUserAndBook();
 
-    @Query("SELECT Loan.id, Book.title as title, User.name as name, Loan.startTime, Loan.endTime " +
+    @Query("SELECT Loan.id, Book.book_name as title, User.name as name, Loan.startTime, Loan.endTime " +
             "FROM Book " +
             "INNER JOIN Loan ON Loan.book_id = Book.id " +
             "INNER JOIN User on User.id = Loan.user_id " +

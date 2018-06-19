@@ -29,4 +29,6 @@ public class Book {
 
     @ColumnInfo(name = "book_name")
     public String title;
+
+
 }
