@@ -16,6 +16,7 @@
 
 package kh.edu.niptict.room.database;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -28,7 +29,7 @@ import static android.arch.persistence.room.OnConflictStrategy.IGNORE;
 @Dao
 public interface UserDao {
     @Query("select * from user")
-    List<User> loadAllUsers();
+    LiveData<List<User>> loadAllUsers();
 
     @Query("select * from user where id = :id")
     User loadUserById(int id);

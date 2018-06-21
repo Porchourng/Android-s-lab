@@ -21,7 +21,7 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-@Database(entities = {User.class, Book.class, Loan.class}, version = 1)
+@Database(entities = {User.class, Book.class, Loan.class}, version = 1, exportSchema = true)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE;
@@ -46,7 +46,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public static AppDatabase getDatabaseBuilder(Context context) {
         if (INSTANCE == null) {
-            INSTANCE = Room.databaseBuilder(context, AppDatabase.class, "library")
+            INSTANCE = Room.databaseBuilder(context, AppDatabase.class, "librarydb.sqlite")
                     .allowMainThreadQueries()
                     .build();
         }
