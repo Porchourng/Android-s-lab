@@ -63,4 +63,7 @@ dependencies {
     annotationProcessor "android.arch.persistence.room:compiler:$room_version"
 
     implementation "android.arch.paging:runtime:$paging_version"
+
+    // Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }

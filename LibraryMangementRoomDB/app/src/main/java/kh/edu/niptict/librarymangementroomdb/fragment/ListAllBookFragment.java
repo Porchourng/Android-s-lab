@@ -6,6 +6,9 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +16,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import kh.edu.niptict.librarymangementroomdb.R;
+import kh.edu.niptict.librarymangementroomdb.adapter.BookAdapter;
 import kh.edu.niptict.librarymangementroomdb.database.AppDatabase;
 import kh.edu.niptict.librarymangementroomdb.database.MainViewModel;
 import kh.edu.niptict.librarymangementroomdb.database.entity.Book;
@@ -25,7 +30,10 @@ import kh.edu.niptict.librarymangementroomdb.database.entity.Book;
  */
 public class ListAllBookFragment extends Fragment {
     private MainViewModel mViewModel;
-    private TextView textView;
+    private RecyclerView recyclerView;
+    private BookAdapter adapter;
+    private List<Book> lists;
+
     public static ListAllBookFragment newInstance() {
         return new ListAllBookFragment();
     }
@@ -40,18 +48,23 @@ public class ListAllBookFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         mViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-
+        lists = new ArrayList<>();
        // mDb = AppDatabase.getDatabaseBuilder(getContext());
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_list_all_book, container, false);
+
+        recyclerView = view.findViewById(R.id.recyclerview);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, true);
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new BookAdapter(getContext(), lists);
+        recyclerView.setAdapter(adapter);
 
         final EditText titleEt = view.findViewById(R.id.titleEt);
         final EditText isbnEt = view.findViewById(R.id.isbnEt);
 
         Button submitBtn = view.findViewById(R.id.submitBookBtn);
         Button refreshBtn = view.findViewById(R.id.refreshBookBtn);
-        textView = view.findViewById(R.id.listAllBookTv);
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,7 +82,7 @@ public class ListAllBookFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getAllBook();
-                getAllBookWithoutLiveData();
+              //  getAllBookWithoutLiveData();
             }
         });
 
@@ -91,12 +104,9 @@ public class ListAllBookFragment extends Fragment {
         mViewModel.getAllBooks().observe(this, new Observer<List<Book>>() {
             @Override
             public void onChanged(@Nullable List<Book> books) {
-                StringBuilder str = new StringBuilder();
-                for (Book book: books) {
-                    str.append(book.getTitle()+"\n");
-                }
+                adapter.addNewList(books);
+                adapter.notifyDataSetChanged();
 
-                textView.setText(str);
             }
         });
     }

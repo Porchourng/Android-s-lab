@@ -1,6 +1,7 @@
 package kh.edu.niptict.librarymangementroomdb.database.entity;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
@@ -18,6 +19,9 @@ public class Book {
         this.title = title;
         this.isbn = isbn;
     }
+
+    @Ignore
+    private String img;
 
     @NonNull
     public long getId() {
@@ -42,5 +46,13 @@ public class Book {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }
