@@ -55,7 +55,7 @@ public class ListAllBookFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_list_all_book, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerview);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         adapter = new BookAdapter(getContext(), lists);
         recyclerView.setAdapter(adapter);
