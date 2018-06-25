@@ -5,10 +5,13 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import kh.edu.niptict.room.database.AppDatabase;
 import kh.edu.niptict.room.database.Book;
+import kh.edu.niptict.room.database.User;
 import kh.edu.niptict.room.database.utils.DatabaseInitializer;
 
 public class MainViewModel extends AndroidViewModel {
@@ -23,6 +26,17 @@ public class MainViewModel extends AndroidViewModel {
 
     public LiveData<List<Book>> getBorrowedBookByName(String name) {
         return mDb.bookModel().findBooksBorrowedByName(name);
+    }
+
+    public LiveData<List<User>> getAllUsers() {
+        return mDb.userModel().loadAllUsers();
+    }
+
+    public LiveData<List<Book>> findBookByName(String name) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, -1);
+        Date yesterday = calendar.getTime();
+        return mDb.bookModel().findBooksBorrowedByNameAfter(name, yesterday);
     }
 
     public void createDb() {
