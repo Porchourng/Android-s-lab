@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -48,13 +50,15 @@ public class MainActivity extends AppCompatActivity {
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Movie m = new Movie(title.getText().toString(), des.getText().toString(), Integer.parseInt(year.getText().toString()));
-                list.add(m);
-                adapter.notifyDataSetChanged();
+                if (!title.getText().toString().equals("") && !des.getText().toString().equals("") && !year.getText().toString().equals("")) {
+                    Movie m = new Movie(title.getText().toString(), des.getText().toString(), Integer.parseInt(year.getText().toString()));
+                    list.add(m);
+                    adapter.notifyDataSetChanged();
+                } else  {
+                    Toast.makeText(getApplicationContext(), "Please complete all fields!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
-
-
     }
 
     private void initData() {
