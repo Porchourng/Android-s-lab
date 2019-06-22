@@ -13,7 +13,7 @@
         android:layout_height="match_parent">
 
         <EditText
-            android:id="@+id/edittextFeed"
+            android:id="@+id/nameET"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -29,13 +29,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/getNameTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="TextView"
-            app:layout_constraintStart_toStartOf="@+id/edittextFeed"
-            app:layout_constraintTop_toBottomOf="@+id/edittextFeed" />
+            app:layout_constraintStart_toStartOf="@+id/nameET"
+            app:layout_constraintTop_toBottomOf="@+id/nameET" />
 
         <Button
             android:id="@+id/button2"
@@ -43,8 +43,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Button"
-            app:layout_constraintStart_toStartOf="@+id/textView3"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintStart_toStartOf="@+id/getNameTv"
+            app:layout_constraintTop_toBottomOf="@+id/getNameTv" />
 
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>

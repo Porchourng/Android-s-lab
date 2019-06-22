@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import kh.edu.niptict.fragment.cons.Const;
 import kh.edu.niptict.fragment.fragment.FriendRequestsFragment;
 import kh.edu.niptict.fragment.fragment.MyProfileFragment;
 import kh.edu.niptict.fragment.fragment.NewFeedFragment;
@@ -29,63 +30,79 @@ public class DynamicFragmentActivity extends AppCompatActivity {
         ImageButton notiBtn = findViewById(R.id.imageButton8);
         ImageButton settingBtn = findViewById(R.id.imageButton9);
 
-        FriendRequestsFragment friendRequestsFragment = FriendRequestsFragment.newInstance();
-        final MyProfileFragment myProfileFragment = MyProfileFragment.newInstance();
-        final NewFeedFragment newFeedFragment = NewFeedFragment.newInstance();
-        final NotificationFragment notificationFragment = NotificationFragment.newInstance();
-        final SettingFragment settingFragment = SettingFragment.newInstance();
+        NewFeedFragment newFeedFragment = NewFeedFragment.newInstance();
 
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        final FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.add(R.id.fragmentcontainer, friendRequestsFragment).commit();
+        ft.add(R.id.fragmentcontainer, newFeedFragment, Const.NewFeed_tag).commit();
 
         newFeedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fm = getSupportFragmentManager();
-                FriendRequestsFragment fr = (FriendRequestsFragment) fm.findFragmentByTag("FriendRequestsFragment");
+                NewFeedFragment fr = (NewFeedFragment) fragmentManager.findFragmentByTag(Const.NewFeed_tag);
                 if (fr == null) {
-                    final FriendRequestsFragment friendRequestsFragment = FriendRequestsFragment.newInstance();
-                    FragmentTransaction ft = fm.beginTransaction();
-                    ft.replace(R.id.fragmentcontainer, friendRequestsFragment, "FriendRequestsFragment").commit();
-
+                    NewFeedFragment newFeedFragment = NewFeedFragment.newInstance();
+                    FragmentTransaction ft = fragmentManager.beginTransaction();
+                    ft.replace(R.id.fragmentcontainer, newFeedFragment, Const.NewFeed_tag).commit();
                 } else {
-                    Toast.makeText(DynamicFragmentActivity.this, "Found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DynamicFragmentActivity.this, "Found NewFeedFragment", Toast.LENGTH_SHORT).show();
                 }
-
-
-
             }
         });
 
         friendReqBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction ft = fragmentManager.beginTransaction();
-                ft.replace(R.id.fragmentcontainer, myProfileFragment).commit();
+                FriendRequestsFragment fr = (FriendRequestsFragment) fragmentManager.findFragmentByTag(Const.Fri_tag);
+                if (fr == null) {
+                    final FriendRequestsFragment friendRequestsFragment = FriendRequestsFragment.newInstance();
+                    FragmentTransaction ft = fragmentManager.beginTransaction();
+                    ft.replace(R.id.fragmentcontainer, friendRequestsFragment, Const.Fri_tag).commit();
+                } else {
+                    Toast.makeText(DynamicFragmentActivity.this, "Found FriendRequestsFragment", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         myProBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                MyProfileFragment fr = (MyProfileFragment) fragmentManager.findFragmentByTag(Const.Prof_tag);
+                if (fr == null) {
+                    final MyProfileFragment myProfileFragment = MyProfileFragment.newInstance();
+                    FragmentTransaction ft = fragmentManager.beginTransaction();
+                    ft.replace(R.id.fragmentcontainer, myProfileFragment, Const.Prof_tag).commit();
+                } else {
+                    Toast.makeText(DynamicFragmentActivity.this, "Found MyProfileFragment", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         notiBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                NotificationFragment fr = (NotificationFragment) fragmentManager.findFragmentByTag(Const.Noti_tag);
+                if (fr == null) {
+                    final NotificationFragment notificationFragment = NotificationFragment.newInstance();
+                    FragmentTransaction ft = fragmentManager.beginTransaction();
+                    ft.replace(R.id.fragmentcontainer, notificationFragment, Const.Noti_tag).commit();
+                } else {
+                    Toast.makeText(DynamicFragmentActivity.this, "Found NotificationFragment", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         settingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                SettingFragment fr = (SettingFragment) fragmentManager.findFragmentByTag(Const.Setting_tag);
+                if (fr == null) {
+                    final SettingFragment settingFragment = SettingFragment.newInstance();
+                    FragmentTransaction ft = fragmentManager.beginTransaction();
+                    ft.replace(R.id.fragmentcontainer, settingFragment, Const.Setting_tag).commit();
+                } else {
+                    Toast.makeText(DynamicFragmentActivity.this, "Found SettingFragment", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
