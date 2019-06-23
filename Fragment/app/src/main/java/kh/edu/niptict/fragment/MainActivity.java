@@ -30,5 +30,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button btn3 = findViewById(R.id.button3);
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, DynamicFragmentWithAddTobackstack.class);
+                startActivity(intent);
+            }
+        });
     }
 }

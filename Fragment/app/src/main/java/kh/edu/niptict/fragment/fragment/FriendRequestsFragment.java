@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import kh.edu.niptict.fragment.R;
 
@@ -37,6 +38,7 @@ public class FriendRequestsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 textView.setText("Close");
+                Toast.makeText(getContext(), "Get Context", Toast.LENGTH_SHORT).show();
             }
         });
 
